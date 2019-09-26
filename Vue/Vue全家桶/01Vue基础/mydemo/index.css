@@ -1,0 +1,17 @@
+ul,li{
+    list-style: none;
+}
+
+.tab-ul{
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+}
+
+.tab-li{
+    display: flex;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
