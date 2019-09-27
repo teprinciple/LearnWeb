@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>168</title>
+
+    <link href="index.css" rel="stylesheet" />
+    <script src="vue.js"></script>
+    <script src="axios.js"></script>
+    <script src="index.css"></script>
+</head>
+
+<body>
+    <div id="app" class="container flex-column">
+        <div class="content flex-row">
+
+            <!-- 所有好友 -->
+            <div class="friends-div flex-column">
+                <span class="friends-title">所有好友(15)/当前选中(2)</span>
+
+                <ul class="friends-ul flex-column">
+                    <li class="friends-li flex-raw" v-for="item in allFriendsList">
+                        <div class="friends-item flex-row">
+                            <img class="img-hot" src="img/ic_hot.png">
+                            <span class="friends-content"> 陈奕迅(1235679845)</span>
+                            <img class="img-hot" src="img/ic_delete.png">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 已选择好友 -->
+            <div class="friends-div flex-column">
+                <span class="friends-title">已选择联系人(2)</span>
+                <ul class="friends-ul flex-column">
+                    <div class="friends-item">
+                        <span> 陈奕迅(1235679845)</span>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+* {
+    margin: 0 0;
+    padding: 0 0;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 横向flex */
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* 纵向flex */
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.debug-red {
+    border: 1px solid red;
+}
+
+.debug-green {
+    border: 1px solid green;
+}
+
+.container {
+    height: 100%;
+    justify-content: center;
+}
+
+.content {
+    align-self: center;
+    width: 1080px;
+    height: 400px;
+    margin: 100px auto;
+}
+
+.friends-div {
+    flex: 1;
+    height: 100%;
+    border: 1.5px solid #D6E9C6;
+    border-radius: 6px;
+    margin: 0 15px;
+}
+
+.friends-title {
+    width: 100%;
+    height: 40px;
+    background: #DFF0D8;
+    color: #3C7966;
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.friends-ul {
+    border-top: 1.5px solid #D6E9C6;
+    padding: 10px 0;
+}
+
+.friends-li {
+    padding: 0 16px;
+}
+
+.friends-item {
+    width: 100%;
+    height: 30px;
+    align-items: center;
+}
+
+.friends-content {
+    line-height: 30px;
+    font-size: 14px;
+    flex: 1
+}
+
+.img-hot {
+    width: 20px;
+    height: 20px;
+    padding: 0 10px 0 0;
+}
