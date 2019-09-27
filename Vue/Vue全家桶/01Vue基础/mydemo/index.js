@@ -21,7 +21,9 @@ window.onload = function() {
 
         // }
 
-        mounted
+        mounted() {
+
+        }
     })
 
     class Student {
