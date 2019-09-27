@@ -10,19 +10,21 @@
     <link href="index.css" rel="stylesheet" />
     <script src="vue.js"></script>
     <script src="axios.js"></script>
-    <script src="index.css"></script>
+    <script src="index.js"></script>
 </head>
 
 <body>
-    <div id="app" class="container flex-column">
+    <div id="myapp" class="container flex-column">
         <div class="content flex-row">
 
             <!-- 所有好友 -->
             <div class="friends-div flex-column">
-                <span class="friends-title">所有好友(15)/当前选中(2)</span>
+                <div class="friends-title-div">
+                    <span class="friends-title">所有好友({{allFriends.length}})/当前选中({{selectedFriends.length}})</span>
+                </div>
 
                 <ul class="friends-ul flex-column">
-                    <li class="friends-li flex-raw" v-for="item in allFriendsList">
+                    <li class="friends-li flex-raw" v-for="item in allFriends">
                         <div class="friends-item flex-row">
                             <img class="img-hot" src="img/ic_hot.png">
                             <span class="friends-content"> 陈奕迅(1235679845)</span>
@@ -34,11 +36,17 @@
 
             <!-- 已选择好友 -->
             <div class="friends-div flex-column">
-                <span class="friends-title">已选择联系人(2)</span>
+                <div class="friends-title-div">
+                    <span class="friends-title">已选择联系人(2)</span>
+                </div>
                 <ul class="friends-ul flex-column">
-                    <div class="friends-item">
-                        <span> 陈奕迅(1235679845)</span>
-                    </div>
+                    <li class="friends-li flex-raw" v-for="item in selectedFriends">
+                        <div class="friends-item flex-row">
+                            <img class="img-hot" src="img/ic_hot.png">
+                            <span class="friends-content"> 陈奕迅(1235679845){{item}}</span>
+                            <img class="img-hot" src="img/ic_delete.png">
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

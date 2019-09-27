@@ -1,11 +1,10 @@
 window.onload = function() {
 
     new Vue({
-        el: "#app",
+        el: "#myapp",
         data: {
-            allFriendsList: ["", "", "", "", "", "", "", "", "", "", "", ""]
-
-
+            allFriends: ["", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+            selectedFriends: ["", ""]
         },
         methods: {
 
@@ -14,7 +13,7 @@ window.onload = function() {
 
         },
         mounted() {
-
+            console.log("挂在完成")
         }
     })
 

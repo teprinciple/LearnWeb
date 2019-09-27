@@ -56,7 +56,7 @@ body {
     margin: 0 15px;
 }
 
-.friends-title {
+.friends-title-div {
     width: 100%;
     height: 40px;
     background: #DFF0D8;
@@ -66,9 +66,17 @@ body {
     font-weight: bold;
 }
 
+.friends-title {
+    margin: 0 16px;
+    font-family: "宋体";
+}
+
 .friends-ul {
     border-top: 1.5px solid #D6E9C6;
     padding: 10px 0;
+    height: 100%;
+    /* overflow: */
+    overflow: auto;
 }
 
 .friends-li {
@@ -77,12 +85,15 @@ body {
 
 .friends-item {
     width: 100%;
-    height: 30px;
+    height: 35px;
     align-items: center;
+    /* color: #FF6A06; */
+    color: #333;
+    font-family: "宋体";
 }
 
 .friends-content {
-    line-height: 30px;
+    line-height: 35px;
     font-size: 14px;
     flex: 1
 }
