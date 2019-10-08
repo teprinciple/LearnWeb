@@ -24,11 +24,11 @@
                 </div>
 
                 <ul class="friends-ul flex-column">
-                    <li class="friends-li flex-raw" v-for="item in allFriends">
-                        <div class="friends-item flex-row">
+                    <li class="friends-li flex-raw" v-for="item in allFriends" @click="add(item)">
+                        <div class="friends-item flex-row" :class="{yellow: hasAdd(item)}">
                             <img class="img-hot" src="img/ic_hot.png">
-                            <span class="friends-content"> 陈奕迅(1235679845)</span>
-                            <img class="img-hot" src="img/ic_delete.png">
+                            <span class="friends-content"> {{item}}(1235679845)</span>
+                            <!-- <img class="img-hot" src="img/ic_delete.png"> -->
                         </div>
                     </li>
                 </ul>
@@ -37,14 +37,14 @@
             <!-- 已选择好友 -->
             <div class="friends-div flex-column">
                 <div class="friends-title-div">
-                    <span class="friends-title">已选择联系人(2)</span>
+                    <span class="friends-title">已选择联系人({{selectedFriends.length}})</span>
                 </div>
                 <ul class="friends-ul flex-column">
                     <li class="friends-li flex-raw" v-for="item in selectedFriends">
                         <div class="friends-item flex-row">
                             <img class="img-hot" src="img/ic_hot.png">
-                            <span class="friends-content"> 陈奕迅(1235679845){{item}}</span>
-                            <img class="img-hot" src="img/ic_delete.png">
+                            <span class="friends-content"> {{item}}(1235679845)</span>
+                            <img class="img-hot" src="img/ic_delete.png" @click="deleteFriends(item)">
                         </div>
                     </li>
                 </ul>
