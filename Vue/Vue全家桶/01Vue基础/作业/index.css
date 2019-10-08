@@ -114,3 +114,11 @@ body {
 .friends-item:hover {
     color: #FF6A06;
 }
+
+.show {
+    display: inline;
+}
+
+.hide {
+    display: none;
+}

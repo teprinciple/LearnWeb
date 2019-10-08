@@ -40,11 +40,11 @@
                     <span class="friends-title">已选择联系人({{selectedFriends.length}})</span>
                 </div>
                 <ul class="friends-ul flex-column">
-                    <li class="friends-li flex-raw" v-for="item in selectedFriends">
-                        <div class="friends-item flex-row">
+                    <li class="friends-li flex-raw" v-for="(item,index) in selectedFriends">
+                        <div class="friends-item flex-row" @click="deleteFriends(item)" @mouseover="setDeleteBtn(index)" @mouseout="setDeleteBtn(-1)">
                             <img class="img-hot" src="img/ic_hot.png">
                             <span class="friends-content"> {{item}}(1235679845)</span>
-                            <img class="img-hot" src="img/ic_delete.png" @click="deleteFriends(item)">
+                            <img class="img-hot hide" src="img/ic_delete.png" :class="{show: index === showIndex}">
                         </div>
                     </li>
                 </ul>

@@ -3,7 +3,8 @@ window.onload = function() {
         el: "#myapp",
         data: {
             allFriends: ["小胡子", "梁朝伟", "毛毛雨", "曹操", "搬砖", "万金油", "杨过", "小龙女", "胡一天"],
-            selectedFriends: []
+            selectedFriends: [],
+            showIndex: -1
         },
         methods: {
 
@@ -25,6 +26,12 @@ window.onload = function() {
             // 是否已经添加
             hasAdd: function(value) {
                 return this.selectedFriends.indexOf(value) !== -1
+            },
+
+            // 设置要显示删除按钮的index
+            setDeleteBtn: function(index) {
+                console.log(index);
+                this.showIndex = index;
             }
         },
 
