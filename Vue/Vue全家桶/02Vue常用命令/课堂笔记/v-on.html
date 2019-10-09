@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常用指令</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/javascript" src='js/vue.js'></script>
+	<script>
+	window.onload= function(){
+		new Vue({
+			el:"#my",
+			data:{  //数据  响应式数据
+				n:10
+			},
+			methods:{ //方法
+				play:function(){  //es5
+					this.n = 20
+				},
+				play2(i){   //es6
+					this.n = i;
+				}
+			}
+		})
+	}
+	</script>
+</head>
+<body>
+	<div id="my">
+		<h1>{{n}}</h1>
+		<button v-on:click="play">click</button>
+		<button v-on:click="n=999">click</button>
+		<button @dblclick="play2(100)">dblclick</button>
+		<button @mouseover="play2(100)" @mouseout="play2(1000)">{{n}}</button>
+		
+		<!-- 键盘事件 -->
+		<!-- keydown  keyup -->
+		<!-- 按钮别名 .enter .tab .a  .b .up  .left .right .delete-->
+		<button @keydown.enter="play2(13)">enter</button>
+		<button @keydown.a="play2('a')">a</button>
+		<button @keydown.ctrl.67="play2('ctrl')">ctrl+c</button>
+    </div>
+	
+</body>
+</html>

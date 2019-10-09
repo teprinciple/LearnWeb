@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常用指令</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/javascript" src='js/vue.js'></script>
+	<script>
+	window.onload= function(){
+		new Vue({
+			el:"#my",
+			data:{  //数据  响应式数据
+				n:8,
+				arr:[1,3,5,7,9],
+				obj:{name:'amy',qq:2429462491},
+				items:[{name:'amy',qq:2429462491},{name:'amy',qq:2429462491},{name:'amy',qq:2429462491}]
+			}
+		})
+	}
+	</script>
+</head>
+<body>
+	<div id="my">
+		<!-- 数组 -->
+		<ul>
+			<!-- v  value   i  index -->
+			<li v-for="(v,i) in arr" :key="i">{{v}}</li>
+		</ul>
+		<!-- 对象 -->
+		<ul>
+			<!-- v  value   k  key -->
+			<li v-for="(v,k) in obj">{{k}}==={{v}}</li>
+		</ul>
+		<!-- 数组对象 -->
+		<ul>
+			<!-- v  {name:'amy',qq:2429462491}   i  index -->
+			<li v-for="(v,i) in items" :key="i">{{v.name}}</li>
+		</ul>
+		<!-- 数值 -->
+		<ul>
+			<!-- v  value   i  index -->
+			<li v-for="(v,i) in n" :key="i">{{v}}=={{i}}</li>
+		</ul>
+    </div>
+	
+</body>
+</html>

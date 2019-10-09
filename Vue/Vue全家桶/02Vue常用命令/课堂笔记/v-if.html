@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常用指令</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/javascript" src='js/vue.js'></script>
+	<script>
+	window.onload= function(){
+		new Vue({
+			el:"#my",
+			data:{  //数据  响应式数据
+				flag:false,
+				n:25
+			},
+			methods:{ //方法
+				fun(){
+					return true;
+				}
+			}
+		})
+	}
+	</script>
+</head>
+<body>
+	<div id="my">
+		<!-- <h1 v-show="判断条件，条件为true显示，条件为false隐藏">hello world</h1> -->
+		<h1 v-show="false">hello world</h1>
+		<h1 v-show="flag">v-show</h1>
+		<h1 v-if="flag">v-if</h1>
+		<h1 v-if="n==20">20</h1>
+		<h1 v-else-if="n==18">18</h1>
+		<h1 v-else>Not</h1>
+		<h1 v-if="fun">{{n}}12345</h1>
+    </div>
+	
+</body>
+</html>

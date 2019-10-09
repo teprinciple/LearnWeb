@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常用指令</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/javascript" src='js/vue.js'></script>
+	<script>
+	window.onload= function(){
+		new Vue({
+			el:"#my",
+			data:{  //数据  响应式数据
+				s3:'s3',
+				s1:'s1',
+				s4:{background:'blue'},
+				size:30,
+				flag:true,
+				title:'标题',
+				url:'https://www.baidu.com/img/bd_logo1.png?where=super'
+			},
+			methods:{ //方法
+				fun(type){
+					if(type =='a'){
+						return 'https://www.baidu.com/img/bd_logo1.png?where=super'
+					}else {
+
+					}
+				}
+			}
+		})
+	}
+	</script>
+	<style>
+	.s1 {
+		color:#f60;
+	}
+	.s2{
+		border:1px solid red;
+	}
+	.s3 {
+		color:blueviolet;
+	}
+	</style>
+</head>
+<body>
+	<div id="my">
+		<!-- <img v-bind:src="url" :title="title"/>
+		<img :src="flag ? url:title" :title="title"/>
+		<img :src="fun('a')" :title="title"/> -->
+
+		<!-- 直接引用 -->
+		<div :class="'s3'" >颜色</div>
+		<!-- 通过变量的方式 -->
+		<div :class="s3" >颜色</div> 
+		<!-- 多个引用 -->
+		<div :class="['s2',s3]" >颜色</div> 
+		<div :class="['s2',flag?s3:s1]" >颜色</div> 
+		<!-- 判断条件 -->
+		<div :class="flag?s1:s3" >颜色</div> 
+		<!-- s1表示的样式名   flag判断条件 -->
+		<div :class="{'s1':flag}" >颜色</div> 
+
+		<div style="color:red" >颜色</div>
+		<!-- 通过变量的方式 -->
+		<div :style="{color:'red',fontSize:size+'px'}" >颜色</div>
+		<div :style="s4" >颜色</div> 
+		<!-- 多个引用 -->
+		<div :style="[s4,{color:'red',fontSize:size+'px'}]" >颜色</div> 
+		<div :style="[s4,flag?{fontSize:size+'px'}:{background:'blue'}]" >颜色</div> 
+    </div>
+	
+</body> 
+</html>
