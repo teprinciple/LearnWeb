@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常用指令</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/javascript" src='js/vue.js'></script>
+	<script>
+	window.onload= function(){
+		new Vue({
+			el:"#my",
+			data:{  //数据  响应式数据
+				html:'<h1>hello world</h1>',
+				msg:'welcome'
+			},
+			methods:{ //方法
+				play:function(){  //es5
+					this.n = 20
+				}
+			}
+		})
+	}
+	</script>
+	<style>
+		/* 必须配置CSS样式，否则不生效 */
+	[v-cloak]{
+		display:none;
+	}
+	</style>
+</head>
+<body>
+	<div id="my">
+		<!-- v-cloak 解决{{}} 浏览器闪烁 -->
+		<div v-cloak>{{msg}}</div>
+		<div v-text="msg"></div>
+		<div v-html="html"></div>
+    </div>
+	
+</body>
+</html>

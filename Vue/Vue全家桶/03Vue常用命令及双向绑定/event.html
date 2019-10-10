@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常用指令</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/javascript" src='js/vue.js'></script>
+	<script>
+	window.onload= function(){
+		new Vue({
+			el:"#my",
+			data:{  //数据  响应式数据
+				html:'<h1>hello world</h1>',
+				msg:'签到'
+			},
+			methods:{ //方法
+				play:function(e){  //es5
+					this.n = 20
+					
+				},
+				play1:function(e){  //es5
+					console.log('111')
+				},
+				play2:function(e){  //es5
+					console.log('222')
+				},
+				play3:function(e){  //es5
+					console.log('333');
+					e.stopPropagation();  //阻止事件冒泡
+					
+				},
+				play4:function(e){  //es5
+					console.log('444');
+				},
+				sign(){
+					this.msg = '已签到';
+					console.log('已签到');
+				}
+			}
+		})
+	}
+	</script>
+</head>
+<body>
+	<div id="my">
+		<button @click="play($event)"></button>
+		<div @click="play1()">
+			<div @click="play2()"> 
+					<button @click="play3($event)">按钮</button>
+					<button @click.stop="play4($event)">按钮</button>
+			</div>
+			<!-- //e.preventDefault();  //取消事件的默认动作 -->
+			<a href="http://www.baidu.com" @click="play2()" >跳转页面</a>
+			<a href="http://www.baidu.com" @click.prevent.stop="play2()" >跳转页面</a>
+		</div>
+
+		<!-- 只执行一次 -->
+		<button @click.once="sign()">{{msg}}</button>
+    </div>
+	
+</body>
+</html>

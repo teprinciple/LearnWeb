@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常用指令</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script>
+	window.onload= function(){
+		//Object.defineProperty()动态添加属性
+		var obj = {};
+		// Object.defineProperty(obj,'name',{
+		// 	value:'amy',
+		// 	writable:false   //为true是可以修改   当前属性值是否能修改
+		// });
+		// Object.defineProperties(obj,{
+		// 	'name':{
+		// 		value:'amy',
+		// 		writable:false   //为true是可以修改   当前属性值是否能修改
+		// 	},
+		// 	'age':{
+		// 		value:18,
+		// 		writable:true   //为true是可以修改   当前属性值是否能修改
+		// 	}
+		// });
+
+		var obj2 = {};
+		var a = 123;	
+		Object.defineProperty(obj2,'name',{
+			get:function(){
+				return a;
+			},
+			set:function(val){
+				a = val;
+			}
+		});
+
+		//触发表单
+		document.querySelector("#input").onkeyup = function(e){
+			obj2.name = e.target.value;
+			document.querySelector(".h1").innerHTML = obj2.name;
+		}
+
+	}
+	</script>
+
+</head>
+<body>
+	<div id="my">
+		<input type="text" id="input"/>
+		输出：<h1 class="h1"></h1>
+    </div>
+	
+</body>
+</html>
