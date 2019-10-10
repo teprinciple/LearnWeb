@@ -1,113 +1,126 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>常用指令</title>
-	<link rel="stylesheet" type="text/css" href="css/index.css"/>
-	<script type="text/javascript" src='js/vue.js'></script>
-	<script>
-	window.onload= function(){
-		new Vue({
-			el:"#my",
-			data:{  //数据  响应式数据
-				msg:'welcome',
-				check:true,
-				check2:['跑步'],
-				check3:['1'],
-				radio:0, //单选 框
-				select1:'北京', //下拉框
-				select2:2,
-				items:[{title:'老师',value:'0'},{title:'学生',value:'1'},{title:'家长',value:'2'}],
-			},
-			methods:{ //方法
-				play:function(){  //es5
-				
-				}
-			}
-		})
-	}
-	</script>
+    <title>常用指令</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src='js/vue.js'></script>
+    <script>
+        window.onload = function() {
+            new Vue({
+                el: "#my",
+                data: { //数据  响应式数据
+                    msg: 'welcome',
+                    check: true,
+                    check2: ['跑步'],
+                    check3: ['1'],
+                    radio: 0, //单选 框
+                    select1: '北京', //下拉框
+                    select2: 2,
+                    items: [{
+                        title: '老师',
+                        value: '0'
+                    }, {
+                        title: '学生',
+                        value: '1'
+                    }, {
+                        title: '家长',
+                        value: '2'
+                    }],
+                },
+                methods: { //方法
+                    play: function() { //es5
+
+                    }
+                }
+            })
+        }
+    </script>
 
 </head>
+
 <body>
-	<div id="my">
-		<input type="text" v-model="msg" :disabled="msg=='a'"/>{{msg}}
+    <div id="my">
 
-		<div>
-			<!-- 复选 框 -->
-			<input type="checkbox" v-model="check" />{{check}}
-			<div>
-				爱好：
-				<input type="checkbox" v-model="check2" value="跑步"/>跑步
-				<input type="checkbox" v-model="check2" value="打游戏"/>打游戏
-				<input type="checkbox" v-model="check2" value="唱歌"/>唱歌
-				<span>传给后端的值：{{check2}}</span>
-			</div>
+        <!-- 文本框 -->
+        <input type="text" v-model="msg" :disabled="msg=='a'" />{{msg}}
 
-			<div>
-				爱好2：
-				<input type="checkbox" v-model="check3" value="0"/>跑步
-				<input type="checkbox" v-model="check3" value="1"/>打游戏
-				<input type="checkbox" v-model="check3" value="2"/>唱歌
-				<span>传给后端的值：{{check3}}</span>
-			</div>
-			<div>
-				角色：
-				<div v-for="(item,i) in items" :key="i">
-					<input  type="checkbox" v-model="check3" :value="item.value"/>{{item.title}}
-				</div>
-				<span>传给后端的值：{{check3}}</span>
-			</div>
-		</div>
+        <!-- 复选框 -->
+        <div>
+            <!-- 单个复选框 -->
+            <input type="checkbox" v-model="check" />{{check}}
 
-		<div>
-			<!-- 单选 框 -->
-			<div>
-				性别：
-				<input type="radio" v-model="radio" name="test" value="0"/>男
-				<input type="radio" v-model="radio" name="test" value="1"/>女
-				<span>传给后端的值：{{radio}}</span>
-			</div>
-		</div>
+            <div>
+                爱好：
+                <input type="checkbox" v-model="check2" value="跑步" />跑步
+                <input type="checkbox" v-model="check2" value="打游戏" />打游戏
+                <input type="checkbox" v-model="check2" value="唱歌" />唱歌
+                <span>传给后端的值：{{check2}}</span>
+            </div>
 
-		<div>
-			<!-- 下拉框 -->
-			<div>
-				所在城市：
-				<select v-model="select1">
-					<option>北京</option>
-					<option>武汉</option>
-					<option>上海</option>
-					<option>深圳</option>
-				</select>
-				<span>传给后端的值：{{select1}}</span>
-			</div>
-		</div>
+            <div>
+                爱好2：
+                <input type="checkbox" v-model="check3" value="0" />跑步
+                <input type="checkbox" v-model="check3" value="1" />打游戏
+                <input type="checkbox" v-model="check3" value="2" />唱歌
+                <span>传给后端的值：{{check3}}</span>
+            </div>
 
-		<div>
-			<!-- 下拉框 -->
-			<div>
-				所在城市：
-				<select v-model="select2">
+            <div>
+                角色：
+                <div v-for="(item,i) in items" :key="i">
+                    <input type="checkbox" v-model="check3" :value="item.value" />{{item.title}}
+                </div>
+                <span>传给后端的值：{{check3}}</span>
+            </div>
+        </div>
+
+        <!-- 单选框 -->
+        <div>
+            <div>
+                性别：
+                <input type="radio" v-model="radio" name="test" value="0" />男
+                <input type="radio" v-model="radio" name="test" value="1" />女
+                <span>传给后端的值：{{radio}}</span>
+            </div>
+        </div>
+
+        <!-- 下拉框 -->
+        <div>
+
+            <div>
+                所在城市：
+                <select v-model="select1">
+						<option>北京</option>
+						<option>武汉</option>
+						<option>上海</option>
+						<option>深圳</option>
+					</select>
+                <span>传给后端的值：{{select1}}</span>
+            </div>
+
+            <div>
+                所在城市：
+                <select v-model="select2">
 					<option value="0">北京</option>
 					<option value="1">武汉</option>
 					<option value="2">上海</option>
 					<option value="3">深圳</option>
 				</select>
-				<span>传给后端的值：{{select2}}</span>
-			</div>
-		</div>
+                <span>传给后端的值：{{select2}}</span>
+            </div>
 
-		<div>
-			<!-- 下拉框 -->
-			<div>
-				角色：
-				<select v-model="select2">
-					<option v-for="(item,i) in items" :key="i" :value="item.value">{{item.title}}</option>
-				</select>
-				<span>传给后端的值：{{select2}}</span>
-			</div>
-		</div>
+            <div>
+                角色：
+                <select v-model="select2">
+						<option v-for="(item,i) in items" :key="i" :value="item.value">{{item.title}}</option>
+					</select>
+                <span>传给后端的值：{{select2}}</span>
+            </div>
+        </div>
+
     </div>
-	
+
 </body>
+
 </html>
