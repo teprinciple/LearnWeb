@@ -4,7 +4,7 @@
     <div>
       <ul>
         <li>
-          <router-link to="/home">首页</router-link>
+          <router-link to="/">首页</router-link>
         </li>
         <li>
           <router-link to="/news">新闻</router-link>
@@ -13,36 +13,30 @@
           <router-link to="/list">列表</router-link>
         </li>
         <li>
-          <router-link to="/other">其它页</router-link>
+          <router-link to="/other">其它</router-link>
         </li>
       </ul>
     </div>
-   <!-- 右侧内容 动态加载-->
+
+    <!-- 右侧内容 动态加载-->
     <div>
-      <router-view/> 
+      <router-view />
     </div>
-    
   </div>
 </template>
 
 <script>
-//import obj from './components/Demo3'
-
 export default {
   name: 'App',
-  data(){
-    return {
-
-    }
+  data() {
+    return {};
   },
-  components:{
-    //Demo3
-  }
-}
+  components: {}
+};
 </script>
 
 <style>
-		.active {
-			color:red;
-		}
+.active {
+  color: red;
+}
 </style>
