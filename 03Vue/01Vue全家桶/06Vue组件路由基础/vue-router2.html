@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue-router</title>
+	<script src="vue.js"></script>
+	<script src="vue-router.js"></script>
+	<style>
+		.active {
+			color:red;
+		}
+	</style>
+	<script>
+	//所谓“路由”，是指把数据从一个地方传送到另一个地方的行为和动作
+	//1定义
+	var Home = {
+		template:'<h1>home111</h1>'
+	}
+	var News = {
+		template:'<h1>News222</h1>'
+	}
+	var User = {
+		template:'<h1>User3333</h1>'
+	}
+	//2配置路由
+	var routes = [
+		{path:'/home',component:Home},
+		{path:'/news',component:News},
+		{path:'/user',component:User}
+	]
+	//3创建router实例
+	var router = new VueRouter({
+		routes,
+		linkActiveClass:'active'
+	});
+	//4挂载、注入路由
+	window.onload = function(){
+		new Vue({
+			el:"#my",
+			router, //4挂载、注入路由
+			data:{
+
+			},
+		})
+	}
+	</script>
+</head>
+
+<body>
+	<div id="my">
+		<div>
+			<!-- <router-view>路由匹配到的组件将渲染 路由出口-->
+			<router-view />
+		</div>
+		<router-link to="/home"> home</router-link>
+		<router-link to="/news"> news</router-link>
+		<router-link to="/user"> user</router-link>
+		
+	</div>
+
+</body>
+</html>
+
