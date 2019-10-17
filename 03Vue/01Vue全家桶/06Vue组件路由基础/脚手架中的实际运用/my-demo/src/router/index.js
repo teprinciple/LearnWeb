@@ -14,7 +14,7 @@ export default new Router({
 
     // 路由配置
     routes: [{
-            path: '/',
+            path: '/home',
             component: Home
         },
         {
