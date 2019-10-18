@@ -20,6 +20,12 @@ body {
     background: #f4f4f4;
 }
 
+.app-content {
+    width: 1240px;
+    height: 100%;
+    margin: 0 auto;
+}
+
 .tab-router-active {
     border-bottom: 3px solid #276692 !important;
 }

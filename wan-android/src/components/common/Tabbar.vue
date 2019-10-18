@@ -23,9 +23,9 @@ export default {
         { name: '项目分类', path: '/project' },
         { name: '工具', path: '/tools' }
       ]
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>
