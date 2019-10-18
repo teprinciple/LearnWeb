@@ -1,0 +1,25 @@
+.debug-red {
+    border: 1px solid red;
+}
+
+.debug-green {
+    border: 1px solid green;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+.tab-router-active {
+    border-bottom: 3px solid #276692 !important;
+}

@@ -4,12 +4,17 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import "@/assets/css/reset.css" // 全局引入重置css
+import "@/assets/css/common.css" // 全局引入公用css
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+    el: '#app',
+    router,
+    components: {
+        App
+    },
+    template: '<App/>'
 })
