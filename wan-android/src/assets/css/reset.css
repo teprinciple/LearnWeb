@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     cursor: pointer;
+    /* border-box: 边框盒；content-box: 内容盒 */
+    box-sizing: border-box;
 }
 
 html,

@@ -1,18 +1,19 @@
 <template>
   <div class="flex-row app-content tools-div">
     <div class="div-tools-item" v-for="(item,index) in items" :key="index">
-      <ToolsItem />
+      <ToolsItem :tools="item" />
     </div>
   </div>
 </template>
 
 <script>
 import ToolsItem from '@/components/listitem/ToolsItem'
+import constance from '@/assets/js/constance.js'
 export default {
   name: 'Home',
   data() {
     return {
-      items: ['', '', '', '', '', '', '', '', '', '', '', '', '', '']
+      items: constance.toolsList
     }
   },
   components: {
@@ -25,12 +26,12 @@ export default {
 <style scoped>
 .tools-div {
   flex-wrap: wrap;
+  margin-top: 20px;
   height: 100%;
 }
 
 .div-tools-item {
   width: 30%;
-  height: auto;
   margin: 10px 1%;
 }
 </style>

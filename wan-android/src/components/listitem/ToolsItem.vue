@@ -1,10 +1,12 @@
 <template>
-  <div class="item-div flex-row debug-red">
-    <img class="img-icon" src="https://www.wanandroid.com/resources/image/pc/tools/qrcode.png" />
+  <div class="item-div flex-row" @click="jump(tools.url)">
+    <div>
+      <img class="img-icon" :src="tools.img" />
+    </div>
 
     <div class="flex-column div-content">
-      <span class="title">二维码生成</span>
-      <span class="content">支持二维码在线生成，支持个性化二维码，支持个性化二维码</span>
+      <span class="title">{{tools.title}}</span>
+      <span class="content">{{tools.des}}</span>
     </div>
   </div>
 </template>
@@ -14,15 +16,20 @@ export default {
   name: 'Home',
   data() {
     return {}
-  }
+  },
+  methods: {
+    jump(url) {
+      window.open(url, '_blank')
+    }
+  },
+  props: ['tools']
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .item-div {
-  height: 100%;
-  margin-top: 20px;
+  height: 94px;
   align-items: center;
   background: white;
   border-radius: 4px;
@@ -37,11 +44,12 @@ export default {
   width: 48px;
   height: 48px;
   margin: 0 10px;
+  object-fit: fill;
 }
 
 .div-content {
   justify-content: center;
-  padding-right: 10px;
+  margin-right: 10px;
 }
 
 .title {
