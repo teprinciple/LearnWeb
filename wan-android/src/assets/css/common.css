@@ -29,3 +29,7 @@ body {
 .tab-router-active {
     border-bottom: 3px solid #276692 !important;
 }
+
+.margin-top-20 {
+    margin-top: 20px;
+}

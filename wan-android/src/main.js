@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import "@/assets/css/reset.css" // 全局引入重置css
-import "@/assets/css/common.css" // 全局引入公用css
+import '@/assets/css/reset.css' // 全局引入重置css
+import '@/assets/css/common.css' // 全局引入公用css
+
+import '@/assets/iconfont/iconfont.css' // 引入字体图标
 
 Vue.config.productionTip = false
 
