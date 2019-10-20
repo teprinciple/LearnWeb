@@ -10,19 +10,19 @@ import Navi from '@/components/page/Navi' // 导航
 import Project from '@/components/page/Project' // 项目分类
 import Tools from '@/components/page/Tools' // 工具
 
-
 Vue.use(Router)
 
 export default new Router({
+    base: '/wanandroid/',
     linkActiveClass: 'tab-router-active',
     routes: [{
-            path: "/",
-            redirect: "/home"
+            path: '/',
+            redirect: '/home'
         },
         {
             path: '/home',
             name: 'Home',
-            component: Home,
+            component: Home
         },
         {
             path: '/user-article',
