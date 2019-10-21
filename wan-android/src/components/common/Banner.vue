@@ -44,7 +44,6 @@ export default {
   methods: {
     move2Next(click = false) {
       this.justClick = click
-      this.currentIndex++
       if (this.currentIndex === this.list.length) {
         this.currentIndex = 0
       }
