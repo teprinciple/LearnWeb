@@ -27,6 +27,7 @@ export default {
       api
         .getBanners()
         .then(res => {
+          console.log(res);
           this.banners = res.data;
         })
         .catch(err => {});
