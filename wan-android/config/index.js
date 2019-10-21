@@ -12,7 +12,7 @@ module.exports = {
         // proxyTable: {
         //     '/api': {
         //         // 要代理的接口名
-        //         target: 'http://192.168.1.4:8080/', // 要代理的接口地址
+        //         target: 'https://www.wanandroid.com', // 要代理的接口地址
         //         changeOrigin: true, // 允许跨域
         //         pathRewrite: { '^/api': '' } // 接口名重写
         //     }

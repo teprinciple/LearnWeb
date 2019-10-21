@@ -67,6 +67,6 @@ export function get(url, param) {
 
 export default {
     getBanners() {
-        return get('http://www.wanandroid.com/banner/json');
+        return get('api/banner/json');
     }
 };
