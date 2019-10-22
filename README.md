@@ -48,3 +48,7 @@ vue 项目如何部署到 Tomcat 中
 1、router/index.js 中需要配置：base: '/wanandroid/',
 
 2、config/index.js 配置的是 build 下面的 不是 dev 下面的，切记
+
+### 二、VsCode 常用快捷键
+
+https://www.jianshu.com/p/512dde9376da
