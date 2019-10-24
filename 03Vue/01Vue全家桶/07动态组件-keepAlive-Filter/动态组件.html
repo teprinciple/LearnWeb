@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>组件</title>
+	<script src="vue.js"></script> 
+	<style>
+	ul,li {
+    	padding:0;
+    	margin:0;
+    }
+    .tab-tit li{
+        padding: 10px 15px;
+	    text-align: center;
+	    list-style:none;
+	    cursor:pointer;
+		display: inline-block;
+    }
+    .tab-tit .active{
+        color: #09f;
+    	border-bottom: 1px solid #09f;
+    }
+    .tab-con div{
+        margin:30px;
+    }</style>
+	<script>
+		window.onload = function(){
+			new Vue({
+				el:"#my",
+				data:{
+					items:["a","b","c","d"],
+					obj:{name:'xyz'},
+					flag:'my-ul'   //组件的名称
+				},
+				components:{   //局部组件
+					'my-ul':{
+						template:'#myUl',
+						data(){
+							return {
+								lists:["a1","b2","c2","d2"]
+							}
+						},
+					},
+					'my-tab':{
+						template:'#myTab',
+						data(){
+							return {
+								n:1,
+								lists:[
+										{title:'a1',con:'内容a1'},
+										{title:'a2',con:'内容a2'},
+										{title:'a3',con:'内容a3'},
+										{title:'a4',con:'内容a4'},
+										{title:'a5',con:'内容a5'}],
+								}
+						}
+					}
+				}
+			})
+		}
+	</script>
+</head>
+<body>
+	<template id="myUl">
+		<ul>
+			<li v-for="(list,i) in lists" :key="i">{{list}}</li>
+		</ul>
+	</template>
+
+	<template id="myTab">
+			<div>
+				<ul class="tab-tit">
+					<li v-for="(v,i) in lists" :key="i" :class="n==i?'active':''" @click="n=i">{{v.title}}</li>   
+				</ul>
+				<div class="tab-con">
+					<div v-for="(v,i) in lists" :key="i" v-show="n==i">
+						{{v.con}}
+					</div>
+				</div>
+			</div>
+	</template>
+	<div id="my">
+		<button @click="flag='my-ul'">myUl</button>
+		<button @click="flag='my-tab'">myTab</button>
+		<!-- <my-ul v-show="flag=='my-ul'"></my-ul>
+		<my-tab v-show="flag=='my-tab'"></my-tab> -->
+		<component :is="flag"></component>
+		
+	</div>
+	
+</body>
+</html>

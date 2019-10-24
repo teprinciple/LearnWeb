@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>组件</title>
+	<script src="vue.js"></script> 
+	<style>
+	ul,li {
+    	padding:0;
+    	margin:0;
+    }
+    .tab-tit li{
+        padding: 10px 15px;
+	    text-align: center;
+	    list-style:none;
+	    cursor:pointer;
+		display: inline-block;
+    }
+    .tab-tit .active{
+        color: #09f;
+    	border-bottom: 1px solid #09f;
+    }
+    .tab-con div{
+        margin:30px;
+    }</style>
+	<script>
+		window.onload = function(){
+			new Vue({
+				el:"#my",
+				data:{
+					items:["a","b","c","d"],
+					obj:{name:'xyz'},
+					flag:'my-ul'   //组件的名称
+				},
+				components:{   //局部组件
+					'my-ul':{
+						template:'<h1>my-ul:{{a}}</h1>',
+						data(){
+							return {
+								a:Math.random()  //随机数据
+							}
+						},
+					},
+					'my-tab':{
+						template:'<h1>myTab:{{b}}</h1>',
+						data(){
+							return {
+								b:Math.random()
+							}	
+						}
+					}
+				}
+			})
+		}
+	</script>
+</head>
+<body>
+	<div id="my">
+		<button @click="flag='my-ul'">myUl</button>
+		<button @click="flag='my-tab'">myTab</button>
+		<!-- <my-ul v-show="flag=='my-ul'"></my-ul>
+		<my-tab v-show="flag=='my-tab'"></my-tab> -->
+		<!-- <keep-alive>
+			include:只有匹配的组件才会缓存，符合条件：字符串/正则
+			exclude:任何组件不会缓存，符合条件：字符串/正则
+		-->
+		<!-- include="my-ul" 只有组件my-ul才会缓存 添加多个  include="my-ul,my-tab"-->
+		<!-- <keep-alive include="my-ul">
+			<component :is="flag"></component>
+		</keep-alive> -->
+		<!-- exclude="my-ul" 除了my-ul 其它缓存 -->
+		<keep-alive exclude="my-ul">
+			<component :is="flag"></component>
+		</keep-alive>
+		
+	</div>
+	
+</body>
+</html>
