@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>过滤器</title>
+	<script src="vue.js"></script> 
+	
+	<script>
+		// 过滤器允许使用地方：1、{{ }}   2  v-bind
+		window.onload = function(){
+			new Vue({
+				el:"#my",
+				data:{
+					items:[{name:'a1',type:'0'},{name:'a2',type:'1'},{name:'a3',type:'2'},{name:'a4',type:'1'}],
+					input:32424324.4234324,
+					input2:'',
+					time:'1571833577',
+				},
+				filters:{
+					typeFilter:function(data){   //过滤器的名称
+						// if(data=='0'){
+						// 	return '启动'
+						// }else {
+						// 	return '12345'
+						// }
+						switch(data){
+							case '0':
+								return '启动';
+							case '1':
+								return '连接';
+							case '2':
+								return '离线';
+							default:
+								return data;
+						}
+					},
+					addZero:function(data){
+						return data<10 ?'0'+data :data;
+					},
+					numberFilter:function(data,n){
+						return data.toFixed(n);
+					},
+					toShortShow:function(data,n){
+						if(!data) return;
+						if(data.length >= n){
+							var s = data.substr(0,n);
+							return s+'...';
+						}else {
+							return data;
+						}
+					},
+					date:function(data){
+						var d = new Date(data*1000);
+						return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+					}
+				}
+			})
+		}
+	</script>
+</head>
+<body>
+	<div id="my">
+		<ul>
+			<li v-for="(item,i) in items" :key="i">{{item.name}}--{{item.type | typeFilter}}</li>
+		</ul>
+		<h1 v-bind:id="2 |addZero"></h1>
+		<!-- 过滤器传参数 numberFilter(1)-->
+		<h1>{{input | numberFilter(4) }}</h1>
+
+		<!-- 时间戳 -->
+		<h1>北京时间：{{time |date}}</h1>
+		<!-- 输入的内容添加省略号   大于5添加.... -->
+		<input type="text" v-model="input2" /> 
+		<h1>{{input2 | toShortShow(5)}}</h1>
+	</div>
+	
+</body>
+</html>

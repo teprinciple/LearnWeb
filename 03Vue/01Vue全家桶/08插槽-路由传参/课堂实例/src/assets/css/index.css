@@ -1,0 +1,65 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+body {
+  font-size: 14px;
+  background: #f5e3d9;
+}
+body,html{
+  width:100%;
+  height:100%;
+
+}
+#app,
+.main {
+  width:100%;
+  height:100%;
+}
+.sidebar {
+  width: 200px;
+  height: 100%;
+  background: #66686d;
+  float:left;
+  position: fixed;
+}
+.right-content {
+  margin-left: 200px;
+  padding:20px;
+}
+.sidebar> ul {
+  height: 100%;
+}
+.p_title {
+  color: #fff;
+  display: block;
+  padding: 15px;  
+  cursor:pointer;
+  border-bottom: 1px solid #777;
+}
+
+.p_title> i{
+  padding-right:10px;
+}
+
+.p_title:hover {
+  color: #f60;
+}
+
+/* 右侧内容 */
+.right-content {
+  background: #f5e3d9;
+}
+.right-content #myChart1,
+.right-content #myChart2{
+  background:rgba(255,255,255,.4);
+  margin:15px 0;
+}

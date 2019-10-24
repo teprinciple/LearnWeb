@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue-router</title>
+	<script src="vue.js"></script>
+	<script src="vue-router.js"></script>
+	<style>
+		.active {
+			color: #f60;
+		}
+	</style>
+	<script>
+	//所谓“路由”，是指把数据从一个地方传送到另一个地方的行为和动作 
+	//params：/router1/:id ，/router1/123，/router1/789 ,这里的id叫做params
+	//query：/router1?id=123 ,/router1?id=456 ,这里的id叫做query。
+	//$router为vueRouter实例 $router.push()
+    //$route 对象this.$route.params     query    name  
+		// 1. 定义 (路由) 组件。
+		// 可以从其他文件 import 进来
+		var Home = {
+			template: '#home'
+		}
+		var News = {
+			template: '#news'
+		}
+		var User = {
+				// 	路由获取参数http://localhost:8080/#/home/info/100  $route.params.id 
+    			// {{$route.params.id}}
+    			//  路由获取参数/home/info?id=1000 
+    			// {{$route.query.id}}
+			template: '<div>User {{ $route.params.id}}</div>'
+		}
+		
+		//2.配置路由
+		// 每个路由应该映射一个组件。 
+		//就是一组路由
+		const routes = [
+			{path: '/home', component: Home},
+			{path: '/news', component: News},
+			{path: '/user/:id', component: User},//路由中定义http://localhost:8080/#/user/100  需要定义ID
+       			// path: '/user',//路由中定义这种方式user?id=1000 是不需要传ID
+			{path: '/', redirect: '/home'}   //重定向  {path: '/*', redirect: '/home'}   //重定向
+		];
+		// 3. 创建 router 实例，然后传 `routes` 配置
+		////router是一个机制，相当于一个管理者，来管理路由
+		const router = new VueRouter({
+			routes,//routes:routes   
+			linkActiveClass: 'active' 
+		});
+		
+		var vm = null;
+		window.onload=function(){
+			// 4. 创建和挂载根实例。
+			// 记得要通过 router 配置参数注入路由，
+			// 从而让整个应用都有路由功能
+			vm = new Vue({
+				el:'#my',
+				router,    //router实例注入到vue实例中，就可以使用路由了
+				data:{
+					id:10
+				}
+			});
+		}
+	</script>
+</head>
+<template id="home">
+	<div>
+		<h3>组件home</h3>
+	</div>
+</template>
+<template id="news">
+	<div>
+		<h3>组件news</h3>
+	</div>
+</template>
+<template id="test">
+	<div>
+		<h3>组件news</h3>
+	</div>
+</template>
+
+<body>
+	<div id="my">
+	 <!-- 使用 router-link 组件来导航. -->
+     <!-- 通过传入 `to` 属性指定链接. -->
+     <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+		<router-link to="/home">home</router-link>
+		<router-link to="/news">news</router-link>
+		<!--<router-link to="/user/5">user</router-link>-->
+		<router-link :to="'/user/'+id">user</router-link>
+		<router-link  :to="{path:'/home',query: {id: id}}">test</router-link>
+		<div>
+		<!-- 路由出口 -->
+  		<!-- 路由匹配到的组件将渲染在这里 -->
+			<router-view></router-view>
+		</div>
+	</div>
+
+</body>
+</html>
+
+<!-- Vue-详解设置路由导航的两种方法： <router-link :to="..."> 和router.push(...)
+	//声明式  <router-link :to="...">		
+	//编程式  router.push(...)
+
+// 声明式的常见方式
+<router-link to="/home">home</router-link>
+// 对象
+<router-link :to="{path:'/home'}">home</router-link>
+// 路由通过名称
+<router-link :to="{name: 'homename'}">home</router-link>
+//直接路由带查询参数query，地址栏变成 /home?id=10
+<router-link :to="{path: 'home', query: {id: 10 }}">home</router-link>
+// 命名路由带查询参数query，地址栏变成/home?id=10
+<router-link :to="{name: 'homename', query: {id: 10 }}">home</router-link>
+//直接路由带路由参数params，params 不生效，如果提供了 path，params 会被忽略
+<router-link :to="{path: 'home', params: { id: 10 }}">home</router-link>
+// 命名路由带路由参数params，地址栏是/home/10
+<router-link :to="{name: 'homename', params: { id: 10 }}">home</router-link>
+
+
+二、router.push(...)方法
+// 字符串
+router.push('/home')
+// 对象
+router.push({path:'/home'})
+// 路由通过名称
+router.push({name: 'homename'})
+//直接路由带查询参数query，地址栏变成 /home?id=10
+router.push({path: 'home', query: {id: 10 }})
+// 命名路由带查询参数query，地址栏变成/home?id=10
+router.push({name: 'homename', query: {id: 10 }})
+//直接路由带路由参数params，params 不生效，如果提供了 path，params 会被忽略
+router.push({path:'homename', params:{ id: 10 }})
+// 命名路由带路由参数params，地址栏是/home/10
+router.push({name:'homename', params:{ id: 10 }})
+
+-->
