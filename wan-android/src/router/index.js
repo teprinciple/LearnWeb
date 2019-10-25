@@ -22,45 +22,69 @@ export default new Router({
         {
             path: '/home',
             name: 'Home',
-            component: Home
+            component: Home,
+            meta: {
+                keepAlive: true
+            }
         },
         {
             path: '/user-article',
             name: 'UserArticle',
-            component: UserArticle
+            component: UserArticle,
+            meta: {
+                keepAlive: false
+            }
         },
         {
             path: '/project-index',
             name: 'ProjectIndex',
-            component: ProjectIndex
+            component: ProjectIndex,
+            meta: {
+                keepAlive: false
+            }
         },
 
         {
             path: '/tree',
             name: 'Tree',
-            component: Tree
+            component: Tree,
+            meta: {
+                keepAlive: false
+            }
         },
         {
             path: '/weixin-list',
             name: 'WeixinList',
-            component: WeixinList
+            component: WeixinList,
+            meta: {
+                keepAlive: false
+            }
         },
         {
             path: '/navi',
             name: 'Navi',
-            component: Navi
+            component: Navi,
+            meta: {
+                keepAlive: false
+            }
         },
 
         {
             path: '/project',
             name: 'Project',
-            component: Project
+            component: Project,
+            meta: {
+                keepAlive: false
+            }
         },
 
         {
             path: '/tools',
             name: 'Tools',
-            component: Tools
+            component: Tools,
+            meta: {
+                keepAlive: false
+            }
         }
     ]
 })
