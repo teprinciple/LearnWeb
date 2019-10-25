@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js监听购物车</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <script src="js/vue.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <div id="shopcart">
+        <div class="panel panel-success" style="margin:20px;">
+            <!-- 头部 -->
+            <div class="panel-heading">
+                <h1>Vue测试监听查询购物车数量及金额变化</h1>
+            </div>
+            <!-- 头部 -->
+            <div class="panel-body">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <a class="btn btn-success">名称搜索</a>
+                    </span>
+                  <input class="form-control" type="text" placeholder="请输入查询内容"/>
+                  
+                </div>
+            </div>
+          
+            <!-- 内容 -->
+            <div class="panel-body">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>图片</th>
+                      <th>商品名称</th>
+                      <th>商品数量</th>
+                      <th>商品单价(元)</th>
+                      <th>商品金额(元)</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                        <tr>
+                            <td><img src="images/苹果.jpg"/></td>
+                            <td>苹果</td>
+                            <td>
+                                <button>-</button>
+                                2
+                                <button>+</button>
+                            </td>
+                            <td>￥10.00</td>
+                            <td>￥10.00</td>
+                            <td><button type="button" class="btn btn-success btn-sm">商品详情</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="images/西瓜.jpg"/></td>
+                            <td>西瓜</td>
+                            <td>
+                                <button>-</button>
+                                2
+                                <button>+</button>
+                            </td>
+                            <td>￥10.00</td>
+                            <td>￥10.00</td>
+                            <td><button type="button" class="btn btn-success btn-sm">商品详情</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="images/车厘子.jpg"/></td>
+                            <td>车厘子</td>
+                            <td>
+                                <button>-</button>
+                                2
+                                <button>+</button>
+                            </td>
+                            <td>￥155.00</td>
+                            <td>￥155.00</td>
+                            <td><button type="button" class="btn btn-success btn-sm">商品详情</button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" >3件商品总计（不含运费）：￥100.00</td>
+                        </tr>
+                    
+                  </tbody>
+                </table>
+            </div>
+    </div>
+</body>
+
+</script>
+
+</html>

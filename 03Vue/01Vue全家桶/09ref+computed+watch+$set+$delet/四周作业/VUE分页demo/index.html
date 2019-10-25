@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VUE分页功能</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+	<script type="text/javascript" src='js/vue.js'></script>
+    <script type="text/javascript" src='js/axios.js'></script>
+    <script type="text/javascript" src='js/index.js'></script>
+</head>
+<body>
+    <div id="my" > 
+        <div class="panel panel-primary" style="margin:20px;">
+        <!-- 头部 -->
+        <div class="panel-heading">
+            <h1 style="display: inline-block;">商品信息统计表</h1>
+            <span>客户总数
+              <span class="label label-warning" >200</span>
+            </span>
+        </div>
+      
+        <!-- 内容 -->
+        <div class="panel-body">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>商品名称</th>
+                  <th>商品价格</th>
+                  <th>商品详情</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>vivo X6移动联通双4G超薄八核大屏双卡智能触屏指纹手机vivox6</td>
+                  <td>5000.00</td>
+                  <td><button type="button" class="btn btn-success btn-sm">查看详情</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Samsung/三星 SM-G6000 Galaxy On7 O7 手机 全网通</td>
+                  <td>4599.00</td>
+                  <td><button type="button" class="btn btn-success btn-sm">查看详情</button></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+         <!--分页-->
+          <nav aria-label="Page navigation" style="text-align: center;">
+              <ul class="pagination">
+                  <li class="disabled">
+                      <a aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                      </a>
+                  </li>
+                  <li class="active">
+                      <a>1</a>
+                  </li>
+                  <li>
+                      <a>2</a>
+                  </li>
+                  <li>
+                      <a>3</a>
+                  </li>
+                  <li >
+                      <a aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+
+    </div>
+</body>
+<style>
+</style>
+</html>
