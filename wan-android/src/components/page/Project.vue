@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Paging style="margin-top: 30px" @onPageChange="onPageChange" />
+    <Paging
+      style="margin-top: 30px"
+      @onPageChange="onPageChange"
+      :totalPages="totalPages"
+      :totalNums="totalNums"
+    />
   </div>
 </template>
 
@@ -10,7 +15,10 @@ import Paging from '@/components/common/Paging';
 export default {
   name: 'Home',
   data() {
-    return {};
+    return {
+      totalPages: 8,
+      totalNums: 123
+    };
   },
   methods: {
     onPageChange(page) {

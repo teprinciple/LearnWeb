@@ -18,9 +18,6 @@
     2、左边小于为前4的时候，为[1,2,3,4,5]
     3、左边大于等于5的时候，当前页为n，左边数组是[n-2,n-1,n,n+1,n+2]
     4、右侧数据:总数据m [m-4,m-3,m-2,m-1,m],如果当前页 = m-3 时显示右侧数据-->
-
-    <!-- 1、当前页小于等于4，那么显示[1,2,3,4,5]
-    2、当前页大于5 且 小于等于 总页数-4 显示 [m-4,m-3,m-2,m-1,m]-->
     <!-- 省略号 -->
     <span class="dots" v-if="showDots">. . .</span>
 
@@ -42,7 +39,7 @@
     >末页</button>
 
     <!-- 总页数，总记录数 -->
-    <span class="flex-row" style="margin:0 15px">
+    <span class="flex-row" style="margin:0 15px;align-items:center">
       共
       <span class="num">{{totalPages}}</span>页
     </span>
@@ -58,12 +55,13 @@ export default {
   name: 'Home',
   data() {
     return {
-      totalNums: 124,
-      totalPages: 6,
-      currentPage: 1,
-      itemCounts: 5 // 连续的个数
+      currentPage: 0,
+      itemRange: 5, // 连续的个数
+      leftItems: [],
+      rightItems: []
     };
   },
+  props: ['totalPages', 'totalNums', 'currentPage'],
   methods: {
     setCurrentPage(page) {
       this.currentPage = page;
@@ -76,64 +74,56 @@ export default {
     }
   },
   computed: {
-    //计算属性
-
     // 是否显示 ...
     showDots() {
-      return this.totalPages > this.itemCounts;
-    },
-
-    // ... 左边数据
-    leftItems() {
-      let arr = [];
-      // 1.如果总数 < itemCounts,直接显示所有列表
-      if (this.totalPages <= this.itemCounts) {
-        for (let i = 0; i < this.totalPages; i++) {
-          arr.push(i + 1);
-        }
-        return arr;
-      } else {
-        // 2.如果总数 > itemCounts
-        // 2.1 如果当前页 < itemCounts 显示第一页 到 itemCounts页
-        if (this.currentPage < this.itemCounts) {
-          for (let i = 0; i < this.itemCounts; i++) {
-            arr.push(i + 1);
-          }
-        } else {
-          // 2.2 如果当前页 >= itemCounts
-        }
-      }
-
-      return arr;
-    },
-
-    // ... 右侧数据
-    rightItems() {
-      let arr = [];
-
-      // 1.如果总数 < itemCounts,为空
-      if (this.totalPages <= this.itemCounts) {
-        arr = [];
-      } else {
-        // 2.如果总数 < itemCounts
-        // 2.1 剩下页数 小于 itemCounts
-        if (this.currentPage < this.totalPages - this.itemCounts) {
-          for (let i = 0; i < this.itemCounts; i++) {
-            arr.push(this.totalPages - this.itemCounts + (i + 1));
-          }
-        } else {
-          // 2.2 剩下页书 大于 itemCounts
-          arr = [this.totalPages];
-        }
-      }
-
-      return arr;
+      return this.totalPages > this.itemRange;
     }
   },
   watch: {
     currentPage: function(newValue, oldValue) {
       this.$emit('onPageChange', newValue);
+
+      if (this.totalPages <= this.itemRange) {
+        // 当总数小于itemRange时
+        let leftArr = [];
+        let rightArr = [];
+        for (let index = 1; index <= this.totalPages; index++) {
+          leftArr.push(index);
+        }
+        this.leftItems = leftArr;
+        this.rightItems = rightArr;
+      } else {
+        if (this.currentPage < this.itemRange) {
+          // 前5页
+          let leftArr = [];
+          for (let index = 1; index <= this.itemRange; index++) {
+            leftArr.push(index);
+          }
+          this.leftItems = leftArr;
+          this.rightItems = [this.totalPages];
+        } else if (this.currentPage > this.totalPages - this.itemRange + 1) {
+          // 后5页
+          let rightArr = [];
+          for (let index = 1; index <= this.itemRange; index++) {
+            rightArr.push(this.totalPages - this.itemRange + index);
+          }
+          this.leftItems = [1];
+          this.rightItems = rightArr;
+        } else {
+          // 中间
+          let leftArr = [];
+          let rightArr = [];
+          for (let index = 0; index < this.itemRange; index++) {
+            leftArr.push(this.currentPage + (index - 2));
+          }
+          this.leftItems = leftArr;
+          this.rightItems = [this.totalPages];
+        }
+      }
     }
+  },
+  mounted() {
+    this.currentPage = 1;
   }
 };
 </script>
