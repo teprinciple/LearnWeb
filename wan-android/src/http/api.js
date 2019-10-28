@@ -4,6 +4,7 @@ import axios from 'axios';
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] =
     'application/x-www-form-urlencoded;charset=UTF-8';
+
 // axios.defaults.baseURL = 'https://www.wanandroid.com';
 
 // // 添加请求拦截器
@@ -52,7 +53,13 @@ export function get(url, param) {
 }
 
 export default {
+    // 获取广告数据
     getBanners() {
         return get('/api/banner/json');
+    },
+
+    // 获取项目分类列表
+    getProjectTree() {
+        return get('/api/project/tree/json');
     }
 };

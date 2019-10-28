@@ -61,7 +61,7 @@ export default {
       rightItems: []
     };
   },
-  props: ['totalPages', 'totalNums', 'currentPage'],
+  props: ['totalPages', 'totalNums'],
   methods: {
     setCurrentPage(page) {
       this.currentPage = page;
