@@ -6,7 +6,7 @@
 
     <div class="content flex-column">
       <div class="div-list flex-row">
-        <ProjectItem class="item" v-for="(item,index) in list" :key="index" />
+        <ProjectItem class="item" v-for="(item,index) in list" :key="index" :item="item" />
       </div>
 
       <Paging
@@ -29,35 +29,59 @@ export default {
   name: 'Home',
   data() {
     return {
+      currentPage: 1,
       totalPages: 8,
       totalNums: 123,
       cid: 0,
-      list: ['', '', '', '', '', ''],
+      list: [],
       treeList: []
     };
   },
   methods: {
+    // 分页改变
     onPageChange(page) {
       console.log(page);
+      this.currentPage = page;
+      this.getProjectTree();
     },
 
+    // 类型改变
     sideItemChange(sideItem) {
       this.cid = sideItem.courseId;
+      this.currentPage = 1;
       console.log(sideItem);
+      this.getProjectTree();
     },
 
+    // 获取左边分类列表
     getProjectTree() {
       api
         .getProjectTree()
         .then(res => {
-          if (res.data.length > 0) {
-            this.cid = res.data[0].courseId;
+          if (res.length > 0) {
+            this.cid = res[0].courseId;
           }
-          this.treeList = res.data;
+          this.treeList = res;
+
+          this.getProjectList();
         })
         .catch(err => {
           console.log(err);
         });
+    },
+
+    // 获取项目列表
+    getProjectList() {
+      api
+        .getProjectList(this.currentPage, this.cid)
+        .then(res => {
+          console.log(res);
+          this.list = res.datas.slice(6);
+          this.currentPage = res.curPage;
+          this.totalPages = res.pageCount;
+          this.totalNums = res.total;
+        })
+        .catch(err => {});
     }
   },
   components: { Paging, ProjectItem, ProjectSideBar },

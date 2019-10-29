@@ -1,18 +1,12 @@
 <template>
   <div class="item-container flex-row">
-    <img
-      class="cover"
-      src="https://www.wanandroid.com/blogimgs/025c4573-38d9-4cdc-a591-685a73ac7163.png"
-    />
+    <img class="cover" :src="item.envelopePic" />
     <div class="content-div flex-column">
-      <span class="title">开源漫画项目，部分界面仿有妖气，Kotlin+MVVM+LiveData+协程+Retrofit</span>
-      <span class="content">
-        时光序 Flutter 版是仿照Android版本的时光序，从开始自学dart到基本完成开发历时一个多月,项目中基本使用到了flutter大部分基础widget，完成了大部分炫酷的特效交互,项目使用flutter 官方推荐的provider
-        时光序 Flutter 版是仿照Android版本的时光序，从开始自学dart到基本完成开发历时一个多月,项目中基本使用到了flutter大部分基础widget，完成了大部分炫酷的特效交互,项目使用flutter 官方推荐的provider
-      </span>
+      <span class="title">{{item.title}}</span>
+      <span class="content">{{item.desc}}</span>
       <div class="bottom-div flex-row">
-        <span class>2019-10-13</span>
-        <span class style="margin-left:20px;">hjgkhk</span>
+        <span class>{{item.niceDate}}</span>
+        <span class style="margin-left:20px;">{{item.author}}</span>
       </div>
     </div>
   </div>
@@ -23,7 +17,8 @@ export default {
   name: 'Home',
   data() {
     return {};
-  }
+  },
+  props: ['item']
 };
 </script>
 
