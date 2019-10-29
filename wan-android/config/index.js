@@ -14,7 +14,9 @@ module.exports = {
                 // 要代理的接口名
                 target: 'https://www.wanandroid.com', // 要代理的接口地址
                 changeOrigin: true, // 允许跨域
-                pathRewrite: { '^/api': '' } // 接口名重写
+                pathRewrite: {
+                    '^/api': ''
+                } // 接口名重写
             }
         },
 
@@ -48,7 +50,8 @@ module.exports = {
         // Paths
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
-        assetsPublicPath: '/wanandroid/',
+        // assetsPublicPath: '/wanandroid/', //部署到tomcat时
+        assetsPublicPath: './', // 打包后本地预览
 
         /**
          * Source Maps
