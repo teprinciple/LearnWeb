@@ -15,17 +15,17 @@ export default {
     return {
       tabs: [
         { name: '首页', path: '/home' },
-        { name: '广场', path: '/user-article' },
-        { name: '项目', path: '/project-index' },
+        { name: '项目', path: '/project' },
+        // { name: '广场', path: '/user-article' },
+        // { name: '项目', path: '/project-index' },
         { name: '体系', path: '/tree' },
         { name: '公众号', path: '/weixin-list' },
         { name: '导航', path: '/navi' },
-        { name: '项目分类', path: '/project' },
         { name: '工具', path: '/tools' }
       ]
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>

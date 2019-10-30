@@ -1,11 +1,11 @@
 <template>
   <div class="flex-column">
     <Header />
-    <!-- <keep-alive>
-      <router-view v-if="$route.meta.keepAlive" />
-    </keep-alive>-->
+    <keep-alive>
+      <router-view />
+    </keep-alive>
 
-    <router-view />
+    <!-- <router-view /> -->
   </div>
 </template>
 

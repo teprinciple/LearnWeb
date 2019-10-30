@@ -38,7 +38,7 @@ export default {
 }
 
 .content-div {
-  margin-left: 5px;
+  margin-left: 10px;
   height: 100%;
   width: 320px;
 }

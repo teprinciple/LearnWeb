@@ -10,10 +10,12 @@
       </div>
 
       <Paging
-        style="margin:30px 0"
+        class="paging"
+        v-show="totalPages > 0"
         @onPageChange="onPageChange"
         :totalPages="totalPages"
         :totalNums="totalNums"
+        :currentPage="currentPage"
       />
     </div>
   </div>
@@ -30,8 +32,8 @@ export default {
   data() {
     return {
       currentPage: 1,
-      totalPages: 8,
-      totalNums: 123,
+      totalPages: 0,
+      totalNums: 0,
       cid: 0,
       list: [],
       treeList: []
@@ -42,15 +44,15 @@ export default {
     onPageChange(page) {
       console.log(page);
       this.currentPage = page;
-      this.getProjectTree();
+      this.getProjectList();
     },
 
     // 类型改变
     sideItemChange(sideItem) {
-      this.cid = sideItem.courseId;
+      this.cid = sideItem.id;
       this.currentPage = 1;
-      console.log(sideItem);
-      this.getProjectTree();
+      console.log('类别cid：' + this.cid);
+      this.getProjectList();
     },
 
     // 获取左边分类列表
@@ -59,7 +61,7 @@ export default {
         .getProjectTree()
         .then(res => {
           if (res.length > 0) {
-            this.cid = res[0].courseId;
+            this.cid = res[0].id;
           }
           this.treeList = res;
 
@@ -76,7 +78,7 @@ export default {
         .getProjectList(this.currentPage, this.cid)
         .then(res => {
           console.log(res);
-          this.list = res.datas.slice(6);
+          this.list = res.datas.slice(0, 6);
           this.currentPage = res.curPage;
           this.totalPages = res.pageCount;
           this.totalNums = res.total;
@@ -96,12 +98,16 @@ export default {
 .app-content {
   margin: 30px auto;
   background: white;
+  position: relative;
+  min-height: 100%;
 }
 
 .side {
   margin-top: 30px;
+  margin-bottom: 60px;
   margin-left: 30px;
   width: 120px;
+  min-height: 100%;
 }
 
 .content {
@@ -112,9 +118,18 @@ export default {
 .div-list {
   flex-wrap: wrap;
   margin-left: 50px;
+  justify-content: flex-start;
 }
 
 .item {
-  margin: 15px auto;
+  margin: 15px 5px;
+}
+
+.paging {
+  position: absolute;
+  margin-bottom: 20px !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 </style>

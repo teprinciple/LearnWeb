@@ -55,13 +55,13 @@ export default {
   name: 'Home',
   data() {
     return {
-      currentPage: 0,
+      // currentPage: 0,
       itemRange: 5, // 连续的个数
       leftItems: [],
       rightItems: []
     };
   },
-  props: ['totalPages', 'totalNums'],
+  props: ['totalPages', 'totalNums', 'currentPage'],
   methods: {
     setCurrentPage(page) {
       this.currentPage = page;
@@ -71,18 +71,8 @@ export default {
     },
     move2Next() {
       this.currentPage += 1;
-    }
-  },
-  computed: {
-    // 是否显示 ...
-    showDots() {
-      return this.totalPages > this.itemRange;
-    }
-  },
-  watch: {
-    currentPage: function(newValue, oldValue) {
-      this.$emit('onPageChange', newValue);
-
+    },
+    calculateItems() {
       if (this.totalPages <= this.itemRange) {
         // 当总数小于itemRange时
         let leftArr = [];
@@ -122,8 +112,23 @@ export default {
       }
     }
   },
+  computed: {
+    // 是否显示 ...
+    showDots() {
+      return this.totalPages > this.itemRange;
+    }
+  },
+  watch: {
+    currentPage: function(newValue, oldValue) {
+      this.$emit('onPageChange', newValue);
+      this.calculateItems();
+    },
+    totalPages: function(newValue, oldValue) {
+      this.calculateItems();
+    }
+  },
   mounted() {
-    this.currentPage = 1;
+    this.calculateItems();
   }
 };
 </script>
