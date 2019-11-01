@@ -18,7 +18,12 @@
     </div>
 
     <!-- 登录注册弹窗 -->
-    <el-dialog :title="isLogin ?'登录' : '注册' " :visible.sync="dialogTableVisible" width="400px">
+    <el-dialog
+      custom-class="dialog-body"
+      :title="isLogin ?'登录' : '注册' "
+      :visible.sync="dialogTableVisible"
+      width="400px"
+    >
       <div class="flex-column dialog-div">
         <input type="text" placeholder="请输入用户名" />
 
@@ -68,6 +73,30 @@ export default {
 };
 </script>
 
+<!-- 在这里增加一个style标签；但是不要写scope；来修改element-dialog的样式-->
+<style>
+div.el-dialog__body {
+  padding-top: 0;
+}
+
+.el-dialog {
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*height:600px;*/
+  max-height: calc(100% - 30px);
+  max-width: calc(100% - 30px);
+}
+.el-dialog .el-dialog__body {
+  flex: 1;
+  overflow: auto;
+}
+</style>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .div-container {
@@ -111,7 +140,8 @@ export default {
 }
 
 .dialog-div {
-  border-top: 1px solid #ccc;
+  /* border-top: 1px solid #ccc; */
+  /* padding-top: 10px; */
 }
 
 input {
@@ -120,7 +150,7 @@ input {
   border: 1px solid #adadad;
   border-radius: 3px;
   padding: 0 10px;
-  margin-top: 15px;
+  margin-top: 20px;
   font-size: 16px;
 }
 
@@ -145,5 +175,9 @@ input:focus {
 
 .change-text:hover {
   text-decoration: underline;
+}
+
+.dialog-body {
+  padding-top: 0 !important;
 }
 </style>

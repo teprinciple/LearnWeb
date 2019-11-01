@@ -1,5 +1,5 @@
 <template>
-  <div>导航</div>
+  <div>导航{{this.$store.state.changableNum}}</div>
 </template>
 
 <script>
