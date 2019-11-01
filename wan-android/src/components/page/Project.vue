@@ -4,7 +4,14 @@
       <ProjectSideBar :list="treeList" @sideItem="sideItemChange" />
     </div>
 
-    <div class="content flex-column">
+    <div
+      class="content flex-column"
+      v-loading="loading"
+      element-loading-text="拼命加载中"
+      element-loading-spinner="el-icon-loading"
+      element-loading-background="rgba(0, 0, 0, 0)"
+      customClass="font-size:20px;color:red;"
+    >
       <div class="div-list flex-row">
         <ProjectItem class="item" v-for="(item,index) in list" :key="index" :item="item" />
       </div>
@@ -31,6 +38,7 @@ export default {
   name: 'Home',
   data() {
     return {
+      loading: true,
       currentPage: 1,
       totalPages: 0,
       totalNums: 0,
@@ -74,16 +82,20 @@ export default {
 
     // 获取项目列表
     getProjectList() {
+      this.loading = true;
       api
         .getProjectList(this.currentPage, this.cid)
         .then(res => {
+          this.loading = false;
           console.log(res);
           this.list = res.datas.slice(0, 6);
           this.currentPage = res.curPage;
           this.totalPages = res.pageCount;
           this.totalNums = res.total;
         })
-        .catch(err => {});
+        .catch(err => {
+          this.loading = false;
+        });
     }
   },
   components: { Paging, ProjectItem, ProjectSideBar },

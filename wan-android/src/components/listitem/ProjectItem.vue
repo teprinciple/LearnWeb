@@ -1,6 +1,6 @@
 <template>
   <div class="item-container flex-row">
-    <img class="cover" :src="item.envelopePic" />
+    <img class="cover" :src="item.envelopePic" @click="show"/>
     <div class="content-div flex-column">
       <span class="title">{{item.title}}</span>
       <span class="content">{{item.desc}}</span>
@@ -18,7 +18,12 @@ export default {
   data() {
     return {};
   },
-  props: ['item']
+  props: ['item'],
+  methods:{
+    show() {
+      this.$message.error('错了哦，这是一条错误消息');
+    }
+  }
 };
 </script>
 
