@@ -10,30 +10,62 @@
         <div class="flex-row head-right">
           <!-- <div class="debug-red">搜索框</div> -->
           <div>
-            <span class="btn">登录</span> ·
-            <span class="btn">注册</span>
+            <span class="btn" @click="showLogin">登录</span> ·
+            <span class="btn" @click="showRegister">注册</span>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- 登录注册弹窗 -->
+    <el-dialog :title="isLogin ?'登录' : '注册' " :visible.sync="dialogTableVisible" width="400px">
+      <div class="flex-column dialog-div">
+        <input type="text" placeholder="请输入用户名" />
+
+        <input type="password" placeholder="请输入密码" />
+
+        <input type="password" v-if="!isLogin" placeholder="请输入确认密码" />
+
+        <div class="flex-row" style="justify-content:flex-end">
+          <span class="change-text" @click="changeLoginRegister">{{isLogin ? '去注册' : '去登录' }}</span>
+        </div>
+
+        <button class="commit-btn">{{isLogin ?'登录' : '注册'}}</button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 
 <script>
-import Tabbar from '@/components/common/Tabbar'
+import Tabbar from '@/components/common/Tabbar';
 
 export default {
   name: 'Home',
   data() {
     return {
+      isLogin: true,
+      dialogTableVisible: false
       // logoImg: require('@/src/assets/logo.png')
-    }
+    };
   },
   components: {
     Tabbar
+  },
+  methods: {
+    showLogin() {
+      this.isLogin = true;
+      this.dialogTableVisible = true;
+    },
+    showRegister() {
+      this.isLogin = false;
+      this.dialogTableVisible = true;
+    },
+    changeLoginRegister() {
+      this.isLogin = !this.isLogin;
+    }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -74,6 +106,44 @@ export default {
 
 .btn:hover {
   color: red;
+  text-decoration: underline;
+  margin-top: 0 !important;
+}
+
+.dialog-div {
+  border-top: 1px solid #ccc;
+}
+
+input {
+  height: 35px;
+  width: 100%;
+  border: 1px solid #adadad;
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+input:focus {
+  border: 1px solid #3498db;
+}
+
+.commit-btn {
+  height: 35px;
+  width: 100%;
+  background: #3498db;
+  border-radius: 3px;
+  margin-top: 10px;
+  color: white;
+  font-size: 16px;
+}
+
+.change-text {
+  color: #3498db;
+  margin: 10px 0;
+}
+
+.change-text:hover {
   text-decoration: underline;
 }
 </style>

@@ -1,17 +1,16 @@
 <template>
-  <div class="app-content flex-row">
+  <div
+    class="app-content flex-row"
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0)"
+  >
     <div class="side flex-column">
       <ProjectSideBar :list="treeList" @sideItem="sideItemChange" />
     </div>
 
-    <div
-      class="content flex-column"
-      v-loading="loading"
-      element-loading-text="拼命加载中"
-      element-loading-spinner="el-icon-loading"
-      element-loading-background="rgba(0, 0, 0, 0)"
-      customClass="font-size:20px;color:red;"
-    >
+    <div class="content flex-column">
       <div class="div-list flex-row">
         <ProjectItem class="item" v-for="(item,index) in list" :key="index" :item="item" />
       </div>
