@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/components/page/Home' // 首页
+import Home from '@/components/page/home/Home' // 首页
 import UserArticle from '@/components/page/UserArticle' // 广场
 import ProjectIndex from '@/components/page/ProjectIndex' // 项目
 import Tree from '@/components/page/Tree' // 体系

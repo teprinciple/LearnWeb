@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import qs from 'qs';
+
 // axios 配置
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
@@ -10,14 +12,17 @@ axios.defaults.baseURL = '/api';
 // 拦截器的使用 https://juejin.im/post/5be3e9a4e51d450a456affa5
 
 
-// // 添加请求拦截器
-// axios.interceptors.request.use(function (config) {
-//   // 在发送请求之前做些什么
-//   return config;
-// }, function (error) {
-//   // 对请求错误做些什么
-//   return Promise.reject(error);
-// });
+// 添加请求拦截器
+axios.interceptors.request.use(function(config) {
+    // 在发送请求之前做些什么
+    if (config.method === 'post') {
+        config.data = qs.stringify(config.data);
+    }
+    return config;
+}, function(error) {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+});
 
 // 添加返回拦截器
 axios.interceptors.response.use(
@@ -29,7 +34,7 @@ axios.interceptors.response.use(
                 // console.log(response.data)
                 return Promise.resolve(response.data.data) // 返回解包后的数据
             } else {
-                return Promise.reject(response.errorMsg)
+                return Promise.reject(response.data.errorMsg)
             }
         } else {
             return Promise.reject("错误码：" + response.status)
@@ -66,6 +71,19 @@ export function get(url, param) {
     });
 }
 
+export function post(url, param) {
+    return new Promise((resolve, reject) => {
+
+        axios.post(url, param)
+            .then(response => {
+                resolve(response)
+            })
+            .catch(error => {
+                reject(error);
+            })
+    });
+}
+
 export default {
     // 获取广告数据
     getBanners() {
@@ -83,5 +101,10 @@ export default {
         // let url = '/project/list/${page}/json?cid=${cid}'
 
         // return get('/project/list/${page}/json?cid=${cid}')
+    },
+
+    // 获取项目列表
+    login(userName, password) {
+        return post("/user/login", { 'username': userName, 'password': password })
     },
 };

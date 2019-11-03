@@ -25,17 +25,17 @@
       width="400px"
     >
       <div class="flex-column dialog-div">
-        <input type="text" placeholder="请输入用户名" />
+        <input type="text" placeholder="请输入用户名" v-model="userName" />
 
-        <input type="password" placeholder="请输入密码" />
+        <input type="password" placeholder="请输入密码" v-model="password" />
 
-        <input type="password" v-if="!isLogin" placeholder="请输入确认密码" />
+        <input type="password" v-if="!isLogin" placeholder="请输入确认密码" v-model="comformPwd" />
 
         <div class="flex-row" style="justify-content:flex-end">
           <span class="change-text" @click="changeLoginRegister">{{isLogin ? '去注册' : '去登录' }}</span>
         </div>
 
-        <button class="commit-btn">{{isLogin ?'登录' : '注册'}}</button>
+        <button class="commit-btn" @click="loginOrRegister">{{isLogin ?'登录' : '注册'}}</button>
       </div>
     </el-dialog>
   </div>
@@ -45,10 +45,15 @@
 <script>
 import Tabbar from '@/components/common/Tabbar';
 
+import api from '@/http/api.js';
+
 export default {
   name: 'Home',
   data() {
     return {
+      userName: '',
+      password: '',
+      comformPwd: '',
       isLogin: true,
       dialogTableVisible: false
       // logoImg: require('@/src/assets/logo.png')
@@ -68,6 +73,25 @@ export default {
     },
     changeLoginRegister() {
       this.isLogin = !this.isLogin;
+    },
+    loginOrRegister() {
+      // 先进行校验
+
+      if (this.isLogin) {
+        // 登录
+
+        api
+          .login(this.userName, this.password)
+          .then(res => {
+            console.log(res);
+            this.$message('登录成功');
+          })
+          .catch(err => {
+            this.$message.error(err);
+          });
+      } else {
+        // 注册
+      }
     }
   }
 };
@@ -137,11 +161,6 @@ div.el-dialog__body {
   color: red;
   text-decoration: underline;
   margin-top: 0 !important;
-}
-
-.dialog-div {
-  /* border-top: 1px solid #ccc; */
-  /* padding-top: 10px; */
 }
 
 input {
