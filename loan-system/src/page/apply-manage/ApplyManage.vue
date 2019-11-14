@@ -1,10 +1,10 @@
 <template>
-  <div>首页</div>
+  <div>申请管理</div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Login',
   data() {
     return {};
   }
