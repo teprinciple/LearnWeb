@@ -1,5 +1,5 @@
 <template>
-  <div>首页</div>
+  <div>标的管理</div>
 </template>
 
 <script>

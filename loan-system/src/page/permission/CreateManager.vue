@@ -1,5 +1,5 @@
 <template>
-  <div>贷款申请</div>
+  <div>创建管理员</div>
 </template>
 
 <script>

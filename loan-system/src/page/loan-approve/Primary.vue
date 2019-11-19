@@ -1,5 +1,5 @@
 <template>
-  <div>首页</div>
+  <div>初审</div>
 </template>
 
 <script>

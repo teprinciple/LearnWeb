@@ -1,5 +1,5 @@
 <template>
-  <div>贷款申请</div>
+  <div>用户列表</div>
 </template>
 
 <script>
